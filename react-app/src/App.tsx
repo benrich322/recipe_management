@@ -4,8 +4,6 @@ import {
   faBreadSlice,
   faBurger,
   faEgg,
-  faFish,
-  faJar,
   faLeaf,
   faMugHot,
   faPizzaSlice,

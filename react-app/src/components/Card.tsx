@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { styled } from "@mui/material/styles";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardContent from "@mui/material/CardContent";
@@ -7,12 +6,9 @@ import CardActions from "@mui/material/CardActions";
 import Collapse from "@mui/material/Collapse";
 import Avatar from "@mui/material/Avatar";
 import { IconButton } from "@mui/material";
-import Typography from "@mui/material/Typography";
 import { grey } from "@mui/material/colors";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { IconDefinition } from '@fortawesome/fontawesome-common-types';
-import ExpandMoreButton from "./ExpandMoreButton";
+import { IconDefinition } from "@fortawesome/fontawesome-common-types";
 import CollapsibleTable from "./Table";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
@@ -54,7 +50,7 @@ export default function RecipeReviewCard({
           </CardActions>
         }
         title={title}
-        subheader={`Sku Count: ${count}`}
+        subheader={`${count} Total Item${count !== 1 ? "s" : ""}`}
       />
       <Collapse in={open} timeout="auto" unmountOnExit>
         <CardContent sx={{ padding: 0, "&:last-child": { paddingBottom: 0 } }}>

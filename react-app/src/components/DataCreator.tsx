@@ -10,20 +10,15 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import CustomizedTooltips from "./Tooltips";
 
-export function DataSmokedSalmon(
-  name: string,
-  ingredientCount: number,
-  image: string
-) {
+export function DataSmokedSalmon(name: string, image: string) {
   return {
     name,
-    ingredientCount,
     image,
     history: [
       {
         icon: faBreadSlice,
         ingredient: "Sourdough",
-        conversion: <CustomizedTooltips />,
+        conversion: "Customized Tooltips",
       },
       {
         icon: faFish,
@@ -48,14 +43,9 @@ export function DataSmokedSalmon(
     ],
   };
 }
-export function DataBacon(
-  name: string,
-  ingredientCount: number,
-  image: string
-) {
+export function DataBacon(name: string, image: string) {
   return {
     name,
-    ingredientCount,
     image,
     history: [
       {
@@ -87,14 +77,9 @@ export function DataBacon(
   };
 }
 
-export function DataAvocado(
-  name: string,
-  ingredientCount: number,
-  image: string
-) {
+export function DataAvocado(name: string, image: string) {
   return {
     name,
-    ingredientCount,
     image,
     history: [
       {
