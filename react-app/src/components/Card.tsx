@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { styled } from "@mui/material/styles";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
@@ -14,6 +14,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBreadSlice } from "@fortawesome/free-solid-svg-icons";
 import ExpandMoreButton from "./ExpandMoreButton";
 import CollapsibleTable from "./Table";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 interface RecipeReviewCardProps {
   title: string;
@@ -24,10 +26,10 @@ export default function RecipeReviewCard({
   title,
   count,
 }: RecipeReviewCardProps) {
-  const [expanded, setExpanded] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   const handleExpandClick = () => {
-    setExpanded(!expanded);
+    setOpen(!open);
   };
 
   return (
@@ -41,18 +43,18 @@ export default function RecipeReviewCard({
         action={
           <CardActions>
             <IconButton
+              aria-label="expand row"
+              size="small"
               onClick={handleExpandClick}
-              aria-expanded={expanded}
-              aria-label="show more"
             >
-              <ExpandMoreIcon />
+              {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
             </IconButton>
           </CardActions>
         }
         title={title}
         subheader={`Sku Count: ${count}`}
       />
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
+      <Collapse in={open} timeout="auto" unmountOnExit>
         <CardContent sx={{ padding: 0, "&:last-child": { paddingBottom: 0 } }}>
           <CollapsibleTable />
         </CardContent>
