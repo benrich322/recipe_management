@@ -1,5 +1,4 @@
-import React from 'react';
-import ListGroup from "./components/ListGroups";
+import React from "react";
 import RecipeReviewCard from "./components/Card"; // Import the RecipeReviewCard component
 
 function App() {
@@ -7,18 +6,16 @@ function App() {
     console.log(item);
   };
 
-  let items = ["New York", "San Francisco", "Tokyo", "London"];
-  let names = ["Ben", "Jenna", "Darrel", "Brad"];
-  let sports = ["Basketball", "Baseball"];
+  let categories = ["Toast", "Breakfast Sandwhich", "Cafe Pizza"];
 
   return (
-    <div>      
-      {/* Render the RecipeReviewCard component */}
-      <RecipeReviewCard />
-      <RecipeReviewCard />
+    <div>
+      {/* Map through the categories array and render RecipeReviewCard for each category */}
+      {categories.map((category, index) => (
+        <RecipeReviewCard key={index} title={category} />
+      ))}
     </div>
   );
 }
 
 export default App;
-
