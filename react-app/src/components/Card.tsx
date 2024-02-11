@@ -31,10 +31,10 @@ export default function RecipeReviewCard({
   };
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 1000 }}>
       <CardHeader
         avatar={
-          <Avatar sx={{ bgcolor: grey[500] }} aria-label="recipe">
+          <Avatar sx={{ bgcolor: grey[400] }} aria-label="recipe">
             <FontAwesomeIcon icon={icon} />
           </Avatar>
         }
@@ -49,8 +49,8 @@ export default function RecipeReviewCard({
             </IconButton>
           </CardActions>
         }
-        title={title}
-        subheader={`${count} Total Item${count !== 1 ? "s" : ""}`}
+        title={`${title} (${count})`}
+         
       />
       <Collapse in={open} timeout="auto" unmountOnExit>
         <CardContent sx={{ padding: 0, "&:last-child": { paddingBottom: 0 } }}>

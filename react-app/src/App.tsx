@@ -1,4 +1,6 @@
+import React from "react";
 import RecipeReviewCard from "./components/Card";
+import AppBar from "./components/AppBar";
 import {
   faBowlRice,
   faBreadSlice,
@@ -12,7 +14,7 @@ import {
 function App() {
   let categories = [
     "Toast",
-    "Cafe Sandwhiches",
+    "Cafe Sandwiches",
     "Cafe Salads",
     "Cafe Bowls",
     "Cafe Coffee",
@@ -34,13 +36,16 @@ function App() {
 
   return (
     <div>
+      <AppBar />
       {categories.map((category, index) => (
-        <RecipeReviewCard
-          key={index}
-          title={category}
-          count={counts[index]}
-          icon={icons[index]}
-        />
+        <div key={index}>
+          <RecipeReviewCard
+            key={index}
+            title={category}
+            count={counts[index]}
+            icon={icons[index]}
+          />
+        </div>
       ))}
     </div>
   );
