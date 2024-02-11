@@ -1,10 +1,38 @@
 import RecipeReviewCard from "./components/Card";
-import { faBreadSlice, faFish, faJar } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBowlRice,
+  faBreadSlice,
+  faBurger,
+  faEgg,
+  faFish,
+  faJar,
+  faLeaf,
+  faMugHot,
+  faPizzaSlice,
+} from "@fortawesome/free-solid-svg-icons";
 
 function App() {
-  let categories = ["Toast", "Breakfast Sandwhich", "Cafe Pizza", "Cafe Salad"];
-  let counts = [3, 2, 5, 3];
-  let icons = [faBreadSlice, faFish, faJar, faFish];
+  let categories = [
+    "Toast",
+    "Cafe Sandwhiches",
+    "Cafe Salads",
+    "Cafe Bowls",
+    "Cafe Coffee",
+    "Cafe Pizza",
+    "Bagel",
+    "Breakfast Tacos",
+  ];
+  let counts = [3, 2, 1, 1, 1, 6, 7, 4];
+  let icons = [
+    faBreadSlice,
+    faBurger,
+    faLeaf,
+    faBowlRice,
+    faMugHot,
+    faPizzaSlice,
+    faBreadSlice,
+    faEgg,
+  ];
 
   return (
     <div>
