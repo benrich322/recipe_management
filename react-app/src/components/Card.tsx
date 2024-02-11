@@ -52,9 +52,9 @@ export default function RecipeReviewCard() {
       />
       <CardMedia
         component="img"
-        height="194"
-        image="/public/paella.jpg"
-        alt="Paella dish"
+        height="250"
+        image="/public/smoked_salmon.jpeg"
+        alt="Smoked Salmon"
       />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
