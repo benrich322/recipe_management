@@ -11,7 +11,7 @@ import Typography from "@mui/material/Typography";
 import { grey } from "@mui/material/colors";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBreadSlice } from "@fortawesome/free-solid-svg-icons";
+import { IconDefinition } from '@fortawesome/fontawesome-common-types';
 import ExpandMoreButton from "./ExpandMoreButton";
 import CollapsibleTable from "./Table";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
@@ -20,11 +20,13 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 interface RecipeReviewCardProps {
   title: string;
   count: number;
+  icon: IconDefinition;
 }
 
 export default function RecipeReviewCard({
   title,
   count,
+  icon,
 }: RecipeReviewCardProps) {
   const [open, setOpen] = useState(false);
 
@@ -37,7 +39,7 @@ export default function RecipeReviewCard({
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: grey[500] }} aria-label="recipe">
-            <FontAwesomeIcon icon={faBreadSlice} />
+            <FontAwesomeIcon icon={icon} />
           </Avatar>
         }
         action={

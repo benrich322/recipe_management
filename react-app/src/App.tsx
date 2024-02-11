@@ -1,19 +1,20 @@
-import React from "react";
-import RecipeReviewCard from "./components/Card"; // Import the RecipeReviewCard component
+import RecipeReviewCard from "./components/Card";
+import { faBreadSlice, faFish, faJar } from "@fortawesome/free-solid-svg-icons";
 
 function App() {
-  const handleSelectItem = (item: string) => {
-    console.log(item);
-  };
-
   let categories = ["Toast", "Breakfast Sandwhich", "Cafe Pizza", "Cafe Salad"];
   let counts = [3, 2, 5, 3];
+  let icons = [faBreadSlice, faFish, faJar, faFish];
 
   return (
     <div>
-      {/* Map through the categories array and render RecipeReviewCard for each category */}
       {categories.map((category, index) => (
-        <RecipeReviewCard key={index} title={category} count={counts[index]} />
+        <RecipeReviewCard
+          key={index}
+          title={category}
+          count={counts[index]}
+          icon={icons[index]}
+        />
       ))}
     </div>
   );
