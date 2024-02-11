@@ -45,18 +45,7 @@ export default function RecipeReviewCard() {
         subheader="Sku Count: 3"
       />
       <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardMedia
-          component="img"
-          height="250"
-          image="/public/smoked_salmon.jpeg"
-          alt="Smoked Salmon"
-        />
-        <CardContent>
-          <Typography variant="body2" color="text.secondary">
-            Avocado mash with everything spice, topped with Ducktrap’s
-            Atlantic-caught smoked salmon, & pickled red onion. All avo’ toasts
-            are served on local sourdough. Made to order.
-          </Typography>
+        <CardContent sx={{ padding: 0, '&:last-child': { paddingBottom: 0 } }}>
         <CollapsibleTable></CollapsibleTable>
         </CardContent>
       </Collapse>

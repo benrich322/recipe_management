@@ -14,35 +14,42 @@ import Paper from "@mui/material/Paper";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCalendar } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBreadSlice,
+  faFish,
+  faJarWheat,
+  faCubesStacked,
+  faKitchenSet,
+} from "@fortawesome/free-solid-svg-icons";
 
-function createData(name: string, ingredientCount: number) {
+function createData(name: string, ingredientCount: number, image: string) {
   return {
     name,
     ingredientCount,
+    image,
     history: [
       {
-        icon: faCalendar,
+        icon: faBreadSlice,
         ingredient: "Sourdough",
         conversion: 0.083,
       },
       {
-        icon: faCalendar,
+        icon: faFish,
         ingredient: "Smoked Salmon",
         conversion: 0.25,
       },
       {
-        icon: faCalendar,
+        icon: faCubesStacked,
         ingredient: "Pickle Onion",
         conversion: 0.083,
       },
       {
-        icon: faCalendar,
+        icon: faJarWheat,
         ingredient: "Everything Spice",
         conversion: 0.043,
       },
       {
-        icon: faCalendar,
+        icon: faKitchenSet,
         ingredient: "Avocado Mash Kit",
         conversion: 0.167,
       },
@@ -57,7 +64,7 @@ function Row(props: { row: any }) {
   return (
     <React.Fragment>
       <TableRow sx={{ "& > *": { borderBottom: "unset" } }}>
-        <TableCell>
+        <TableCell sx={{ padding: "3px" }}>
           <IconButton
             aria-label="expand row"
             size="small"
@@ -66,10 +73,14 @@ function Row(props: { row: any }) {
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
         </TableCell>
-        <TableCell component="th" scope="row">
-          {row.name}
+        <TableCell>
+          <img
+            src={row.image}
+            alt={row.name}
+            style={{ width: "95px", borderRadius: "8px", }}
+          />
         </TableCell>
-        <TableCell align="center">{row.ingredientCount}</TableCell>
+        <TableCell>{row.name}</TableCell>
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -78,7 +89,7 @@ function Row(props: { row: any }) {
               <Typography variant="h6" gutterBottom component="div">
                 Recipe
               </Typography>
-              <Table size="small" aria-label="purchases">
+              <Table aria-label="purchases">
                 <TableHead>
                   <TableRow>
                     <TableCell>Icon</TableCell>
@@ -119,12 +130,13 @@ function Row(props: { row: any }) {
 Row.propTypes = {
   row: PropTypes.shape({
     ingredientCount: PropTypes.number.isRequired,
+    image: PropTypes.string.isRequired,
     history: PropTypes.arrayOf(
       PropTypes.shape({
-        icon: PropTypes.object.isRequired, // Update icon PropTypes
+        icon: PropTypes.object.isRequired,
         ingredient: PropTypes.string.isRequired,
         conversion: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-          .isRequired, // Update conversion PropTypes
+          .isRequired,
       })
     ).isRequired,
     name: PropTypes.string.isRequired,
@@ -132,22 +144,19 @@ Row.propTypes = {
 };
 
 const rows = [
-  createData("Smoked Salmon Avocado Toast", 5),
-  createData("Bacon Tomato Avocado Toast", 5),
-  createData("Original Avocado Toast", 5),
+  createData("Smoked Salmon Avocado Toast", 5, "/public/smoked_salmon.jpeg"),
+  createData(
+    "Bacon Tomato Avocado Toast",
+    5,
+    "/public/bacon.jpeg"
+  ),
+  createData("Original Avocado Toast", 5, "/public/avocado.jpeg"),
 ];
 
 export default function CollapsibleTable() {
   return (
     <TableContainer component={Paper}>
-      <Table aria-label="collapsible table">
-        <TableHead>
-          <TableRow>
-            <TableCell />
-            <TableCell>Title</TableCell>
-            <TableCell align="center">Ingredient Count</TableCell>
-          </TableRow>
-        </TableHead>
+      <Table aria-label="collapsible table" size="small">
         <TableBody>
           {rows.map((row) => (
             <Row key={row.name} row={row} />

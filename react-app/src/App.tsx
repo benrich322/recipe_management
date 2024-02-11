@@ -15,6 +15,7 @@ function App() {
     <div>      
       {/* Render the RecipeReviewCard component */}
       <RecipeReviewCard />
+      <RecipeReviewCard />
     </div>
   );
 }
