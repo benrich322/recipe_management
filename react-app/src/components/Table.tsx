@@ -14,48 +14,8 @@ import Paper from "@mui/material/Paper";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faBreadSlice,
-  faFish,
-  faJarWheat,
-  faCubesStacked,
-  faKitchenSet,
-} from "@fortawesome/free-solid-svg-icons";
+import { DataSmokedSalmon, DataBacon, DataAvocado } from "./DataCreator";
 
-function createData(name: string, ingredientCount: number, image: string) {
-  return {
-    name,
-    ingredientCount,
-    image,
-    history: [
-      {
-        icon: faBreadSlice,
-        ingredient: "Sourdough",
-        conversion: 0.083,
-      },
-      {
-        icon: faFish,
-        ingredient: "Smoked Salmon",
-        conversion: 0.25,
-      },
-      {
-        icon: faCubesStacked,
-        ingredient: "Pickle Onion",
-        conversion: 0.083,
-      },
-      {
-        icon: faJarWheat,
-        ingredient: "Everything Spice",
-        conversion: 0.043,
-      },
-      {
-        icon: faKitchenSet,
-        ingredient: "Avocado Mash Kit",
-        conversion: 0.167,
-      },
-    ],
-  };
-}
 
 function Row(props: { row: any }) {
   const { row } = props;
@@ -77,7 +37,7 @@ function Row(props: { row: any }) {
           <img
             src={row.image}
             alt={row.name}
-            style={{ width: "95px", borderRadius: "8px", }}
+            style={{ width: "95px", borderRadius: "8px" }}
           />
         </TableCell>
         <TableCell>{row.name}</TableCell>
@@ -86,15 +46,12 @@ function Row(props: { row: any }) {
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box sx={{ margin: 1 }}>
-              <Typography variant="h6" gutterBottom component="div">
-                Recipe
-              </Typography>
               <Table aria-label="purchases">
                 <TableHead>
                   <TableRow>
-                    <TableCell>Icon</TableCell>
-                    <TableCell>Ingredient</TableCell>
-                    <TableCell>Conversion Factor</TableCell>
+                    <TableCell align='center' sx={{ padding: '2px' }}></TableCell>
+                    <TableCell align='center'sx={{ padding: '4px' }}>Ingredient</TableCell>
+                    <TableCell align='center'sx={{ padding: '4px' }}>Conversion Factor</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -109,11 +66,11 @@ function Row(props: { row: any }) {
                       conversion: string | number;
                     }) => (
                       <TableRow key={icon}>
-                        <TableCell>
+                        <TableCell align='center' sx={{ padding: '2px' }}>
                           <FontAwesomeIcon icon={icon} />
                         </TableCell>
-                        <TableCell>{ingredient}</TableCell>
-                        <TableCell align="right">{conversion}</TableCell>
+                        <TableCell align='center' sx={{ padding: '4px' }}>{ingredient}</TableCell>
+                        <TableCell align='center' sx={{ padding: '4px' }}>{conversion}</TableCell>
                       </TableRow>
                     )
                   )}
@@ -144,13 +101,13 @@ Row.propTypes = {
 };
 
 const rows = [
-  createData("Smoked Salmon Avocado Toast", 5, "/public/smoked_salmon.jpeg"),
-  createData(
-    "Bacon Tomato Avocado Toast",
+  DataSmokedSalmon(
+    "Smoked Salmon Avocado Toast",
     5,
-    "/public/bacon.jpeg"
+    "/public/smoked_salmon.jpeg"
   ),
-  createData("Original Avocado Toast", 5, "/public/avocado.jpeg"),
+  DataBacon("Bacon Tomato Avocado Toast", 5, "/public/bacon.jpeg"),
+  DataAvocado("Original Avocado Toast", 5, "/public/avocado.jpeg"),
 ];
 
 export default function CollapsibleTable() {
