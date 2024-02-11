@@ -17,9 +17,13 @@ import CollapsibleTable from "./Table";
 
 interface RecipeReviewCardProps {
   title: string;
+  count: number;
 }
 
-export default function RecipeReviewCard({ title }: RecipeReviewCardProps) {
+export default function RecipeReviewCard({
+  title,
+  count,
+}: RecipeReviewCardProps) {
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
@@ -46,7 +50,7 @@ export default function RecipeReviewCard({ title }: RecipeReviewCardProps) {
           </CardActions>
         }
         title={title}
-        subheader={`Sku Count: 3`}
+        subheader={`Sku Count: ${count}`}
       />
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent sx={{ padding: 0, "&:last-child": { paddingBottom: 0 } }}>
