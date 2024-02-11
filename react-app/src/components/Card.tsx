@@ -9,23 +9,11 @@ import Collapse from "@mui/material/Collapse";
 import Avatar from "@mui/material/Avatar";
 import { IconButton, IconButtonProps } from "@mui/material";
 import Typography from "@mui/material/Typography";
-import { purple } from "@mui/material/colors";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import ShareIcon from "@mui/icons-material/Share";
+import { grey } from "@mui/material/colors";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
-import FolderIcon from "@mui/icons-material/Folder";
-
-const ExpandMore = styled((props: IconButtonProps & { expand: boolean }) => {
-  const { expand, children, ...other } = props;
-  return <IconButton {...other}>{children}</IconButton>;
-})(({ theme, expand }) => ({
-  transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
-  marginLeft: "auto",
-  transition: theme.transitions.create("transform", {
-    duration: theme.transitions.duration.shortest,
-  }),
-}));
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBreadSlice } from "@fortawesome/free-solid-svg-icons";
+import ExpandMoreButton from "./ExpandMoreButton";
 
 export default function RecipeReviewCard() {
   const [expanded, setExpanded] = React.useState(false);
@@ -38,48 +26,37 @@ export default function RecipeReviewCard() {
     <Card sx={{ maxWidth: 345 }}>
       <CardHeader
         avatar={
-          <Avatar sx={{ bgcolor: purple[500] }} aria-label="recipe">
-            <FolderIcon />
+          <Avatar sx={{ bgcolor: grey[500] }} aria-label="recipe">
+            <FontAwesomeIcon icon={faBreadSlice} />
           </Avatar>
         }
         action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
+          <CardActions>
+            <ExpandMoreButton
+              expand={expanded}
+              onClick={handleExpandClick}
+              aria-expanded={expanded}
+              aria-label="show more"
+            />
+          </CardActions>
         }
-        title="Shrimp and Chorizo Paella"
-        subheader="September 14, 2016"
+        title="Toast"
+        subheader="Sku Count: 3"
       />
-      <CardMedia
-        component="img"
-        height="250"
-        image="/public/smoked_salmon.jpeg"
-        alt="Smoked Salmon"
-      />
-      <CardContent>
-        <Typography variant="body2" color="text.secondary">
-          This impressive paella is a perfect party dish and a fun meal to cook
-          together with your guests. Add 1 cup of frozen peas along with the
-          mussels, if you like.
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton>
-        <ExpandMore
-          expand={expanded}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </ExpandMore>
-      </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
+        <CardMedia
+          component="img"
+          height="250"
+          image="/public/smoked_salmon.jpeg"
+          alt="Smoked Salmon"
+        />
+        <CardContent>
+          <Typography variant="body2" color="text.secondary">
+            Avocado mash with everything spice, topped with Ducktrap’s
+            Atlantic-caught smoked salmon, & pickled red onion. All avo’ toasts
+            are served on local sourdough. Made to order.
+          </Typography>
+        </CardContent>
         <CardContent>
           <Typography paragraph>Method:</Typography>
           <Typography paragraph>
