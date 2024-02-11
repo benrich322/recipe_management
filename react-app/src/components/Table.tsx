@@ -1,5 +1,4 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 import Box from "@mui/material/Box";
 import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
@@ -12,17 +11,19 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import { createData, nameList, imageList, historyList } from "./DataCreator"; // Import createData function
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { DataSmokedSalmon, DataBacon, DataAvocado } from "./DataCreator";
+import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 
 interface RowData {
+  id?: string;
+  name: string;
   image: string;
   history: {
     icon: object;
     ingredient: string;
     conversion: string | number | JSX.Element;
   }[];
-  name: string;
 }
 
 function Row(props: { row: RowData }) {
@@ -31,7 +32,8 @@ function Row(props: { row: RowData }) {
 
   return (
     <React.Fragment>
-      <TableRow sx={{ "& > *": { borderBottom: "unset" } }}>
+      <TableRow sx={{ "& > *": { borderBottom: "unset" } }} key={row.id}>
+        {" "}
         <TableCell sx={{ padding: "3px" }}>
           <IconButton
             aria-label="expand row"
@@ -71,18 +73,12 @@ function Row(props: { row: RowData }) {
                 </TableHead>
                 <TableBody>
                   {row.history.map(
-                    ({
-                      icon,
-                      ingredient,
-                      conversion,
-                    }: {
-                      icon: any;
-                      ingredient: string;
-                      conversion: string | number | JSX.Element;
-                    }) => (
-                      <TableRow key={icon}>
+                    ({ icon, ingredient, conversion }, index) => (
+                      <TableRow key={`${row.id}-${index}`}>
+                        {" "}
+                        {/* Ensure keys are unique */}
                         <TableCell align="center" sx={{ padding: "2px" }}>
-                          <FontAwesomeIcon icon={icon} />
+                          <FontAwesomeIcon icon={icon as IconDefinition} />
                         </TableCell>
                         <TableCell align="center" sx={{ padding: "4px" }}>
                           {ingredient}
@@ -103,26 +99,7 @@ function Row(props: { row: RowData }) {
   );
 }
 
-Row.propTypes = {
-  row: PropTypes.shape({
-    image: PropTypes.string.isRequired,
-    history: PropTypes.arrayOf(
-      PropTypes.shape({
-        icon: PropTypes.object.isRequired,
-        ingredient: PropTypes.string.isRequired,
-        conversion: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-          .isRequired,
-      })
-    ).isRequired,
-    name: PropTypes.string.isRequired,
-  }).isRequired,
-};
-
-const rows = [
-  DataSmokedSalmon("Smoked Salmon Avocado Toast", "/public/smoked_salmon.jpeg"),
-  DataBacon("Bacon Tomato Avocado Toast", "/public/bacon.jpeg"),
-  DataAvocado("Original Avocado Toast", "/public/avocado.jpeg"),
-];
+const rows = createData(nameList, imageList, historyList);
 
 export default function CollapsibleTable() {
   return (
