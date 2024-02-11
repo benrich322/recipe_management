@@ -18,27 +18,27 @@ export function DataSmokedSalmon(name: string, image: string) {
       {
         icon: faBreadSlice,
         ingredient: "Sourdough",
-        conversion: "Customized Tooltips",
+        conversion: <CustomizedTooltips/>,
       },
       {
         icon: faFish,
         ingredient: "Smoked Salmon",
-        conversion: 0.25,
+        conversion: <CustomizedTooltips/>,
       },
       {
         icon: faJar,
         ingredient: "Pickle Onion",
-        conversion: 0.083,
+        conversion: <CustomizedTooltips/>,
       },
       {
         icon: faJarWheat,
         ingredient: "Everything Spice",
-        conversion: 0.043,
+        conversion: <CustomizedTooltips/>,
       },
       {
         icon: faKitchenSet,
         ingredient: "Avocado Mash Kit",
-        conversion: 0.167,
+        conversion: <CustomizedTooltips/>,
       },
     ],
   };

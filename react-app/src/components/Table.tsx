@@ -20,7 +20,7 @@ interface RowData {
   history: {
     icon: object;
     ingredient: string;
-    conversion: string | number;
+    conversion: string | number | JSX.Element;
   }[];
   name: string;
 }
@@ -78,7 +78,7 @@ function Row(props: { row: RowData }) {
                     }: {
                       icon: any;
                       ingredient: string;
-                      conversion: string | number;
+                      conversion: string | number | JSX.Element;
                     }) => (
                       <TableRow key={icon}>
                         <TableCell align="center" sx={{ padding: "2px" }}>
