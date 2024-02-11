@@ -8,12 +8,12 @@ const HtmlTooltip = styled(({ className, ...props }) => (
   <Tooltip {...props} classes={{ popper: className }} />
 ))(({ theme }) => ({
   [`& .${tooltipClasses.tooltip}`]: {
-    backgroundColor: "#e1e1e1", // Adjusted background color to be a little lighter
+    backgroundColor: "#e1e1e1",
     color: "rgba(0, 0, 0, 0.87)",
     maxWidth: 180,
     fontSize: theme.typography.pxToRem(12),
     "& .MuiTooltip-arrow": {
-      color: "#e1e1e1", // Adjusted arrow color to match the background color
+      color: "#e1e1e1",
     },
   },
 }));
