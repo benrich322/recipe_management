@@ -17,12 +17,14 @@ interface RecipeReviewCardProps {
   title: string;
   count: number;
   icon: IconDefinition;
+  data: any[]; // Define the type of data prop
 }
 
 export default function RecipeReviewCard({
   title,
   count,
   icon,
+  data, // Accept data as a prop
 }: RecipeReviewCardProps) {
   const [open, setOpen] = useState(false);
 
@@ -50,11 +52,10 @@ export default function RecipeReviewCard({
           </CardActions>
         }
         title={`${title} (${count})`}
-         
       />
       <Collapse in={open} timeout="auto" unmountOnExit>
         <CardContent sx={{ padding: 0, "&:last-child": { paddingBottom: 0 } }}>
-          <CollapsibleTable />
+          <CollapsibleTable data={data} /> {/* Use the dynamic data */}
         </CardContent>
       </Collapse>
     </Card>

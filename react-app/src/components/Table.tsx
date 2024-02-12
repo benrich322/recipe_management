@@ -11,20 +11,21 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import { createData, nameList, imageList, historyList } from "./DataCreator"; // Import createData function
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+
+interface HistoryItem {
+  icon: IconDefinition;
+  ingredient: string;
+  conversion: string | number | JSX.Element;
+  detail: string;
+}
 
 interface RowData {
   id?: string;
   name: string;
   image: string;
-  history: {
-    icon: object;
-    ingredient: string;
-    conversion: string | number | JSX.Element;
-    detail: string;
-  }[];
+  history: HistoryItem[];
 }
 
 function Row(props: { row: RowData }) {
@@ -60,10 +61,9 @@ function Row(props: { row: RowData }) {
               <Table aria-label="purchases">
                 <TableHead>
                   <TableRow>
-                    <TableCell
-                      align="center"
-                      sx={{ padding: "2px" }}
-                    ></TableCell>
+                    <TableCell align="center" sx={{ padding: "2px" }}>
+                      Icon
+                    </TableCell>
                     <TableCell align="center" sx={{ padding: "4px" }}>
                       Ingredient
                     </TableCell>
@@ -82,7 +82,7 @@ function Row(props: { row: RowData }) {
                         {" "}
                         {/* Ensure keys are unique */}
                         <TableCell align="center" sx={{ padding: "2px" }}>
-                          <FontAwesomeIcon icon={icon as IconDefinition} />
+                          <FontAwesomeIcon icon={icon} />
                         </TableCell>
                         <TableCell align="center" sx={{ padding: "4px" }}>
                           {ingredient}
@@ -106,18 +106,22 @@ function Row(props: { row: RowData }) {
   );
 }
 
-const rows = createData(nameList, imageList, historyList);
+interface CollapsibleTableProps {
+  data: RowData[];
+}
 
-export default function CollapsibleTable() {
+function CollapsibleTable({ data }: CollapsibleTableProps) {
   return (
     <TableContainer component={Paper}>
       <Table aria-label="collapsible table" size="small">
         <TableBody>
-          {rows.map((row) => (
-            <Row key={row.name} row={row} />
+          {data.map((rowData, index) => (
+            <Row key={index} row={rowData} /> // Assuming each row has a unique identifier
           ))}
         </TableBody>
       </Table>
     </TableContainer>
   );
 }
+
+export default CollapsibleTable;

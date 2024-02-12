@@ -123,4 +123,9 @@ const historyList = [
   ],
 ];
 
-export { nameList, imageList, historyList };
+// Exporting the data as a dictionary
+export const toast = {
+  nameList,
+  imageList,
+  historyList,
+};
