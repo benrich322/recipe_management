@@ -23,6 +23,7 @@ interface RowData {
     icon: object;
     ingredient: string;
     conversion: string | number | JSX.Element;
+    detail: string;
   }[];
 }
 
@@ -69,11 +70,14 @@ function Row(props: { row: RowData }) {
                     <TableCell align="center" sx={{ padding: "4px" }}>
                       Conversion Factor
                     </TableCell>
+                    <TableCell align="center" sx={{ padding: "4px" }}>
+                      Detail
+                    </TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
                   {row.history.map(
-                    ({ icon, ingredient, conversion }, index) => (
+                    ({ icon, ingredient, conversion, detail }, index) => (
                       <TableRow key={`${row.id}-${index}`}>
                         {" "}
                         {/* Ensure keys are unique */}
@@ -85,6 +89,9 @@ function Row(props: { row: RowData }) {
                         </TableCell>
                         <TableCell align="center" sx={{ padding: "4px" }}>
                           {conversion}
+                        </TableCell>
+                        <TableCell align="center" sx={{ padding: "4px" }}>
+                          {detail}
                         </TableCell>
                       </TableRow>
                     )
