@@ -35,7 +35,7 @@ function App() {
   ];
 
   return (
-    <div>
+    <div style={{ margin: "0 auto", maxWidth: "1000px" }}>
       <AppBar />
       {categories.map((category, index) => (
         <div key={index}>

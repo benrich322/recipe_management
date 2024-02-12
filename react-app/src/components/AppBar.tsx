@@ -2,18 +2,14 @@ import AppBar from "@mui/material/AppBar";
 import Container from "@mui/material/Container";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { grey } from '@mui/material/colors';
+import { grey } from "@mui/material/colors";
 
 function ResponsiveAppBar() {
   return (
-    <AppBar
-      position="static"
-      sx={{ backgroundColor: grey[50] }}
-      style={{ maxWidth: 1000 }}
-    >
+    <AppBar position="static" sx={{ backgroundColor: grey[200] }}>
       {" "}
-      <Container>
-        <Toolbar>
+      <Container style={{ paddingLeft: "20px" }}>
+        <Toolbar style={{ padding: "0" }}>
           <img
             src="logo.svg"
             alt="Logo"
