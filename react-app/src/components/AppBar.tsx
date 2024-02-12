@@ -15,7 +15,7 @@ function ResponsiveAppBar() {
       <Container>
         <Toolbar>
           <img
-            src="foxtrot-logo-black.svg"
+            src="logo.svg"
             alt="Logo"
             style={{ marginRight: "20px", width: "35px", height: "auto" }} // Update the width and height here
           />

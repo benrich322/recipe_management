@@ -33,8 +33,15 @@ function Row(props: { row: RowData }) {
   return (
     <React.Fragment>
       <TableRow sx={{ "& > *": { borderBottom: "unset" } }} key={row.id}>
-        {" "}
-        <TableCell sx={{ padding: "3px" }}>
+        <TableCell style={{ display: "flex", alignItems: "center" }}>
+          <img
+            src={row.image}
+            alt={row.name}
+            style={{ maxWidth: "75px", height: "auto", borderRadius: "8px" }}
+          />
+          <span style={{ marginLeft: "20px" }}>{row.name}</span>
+        </TableCell>
+        <TableCell style={{ textAlign: "right" }}>
           <IconButton
             aria-label="expand row"
             size="small"
@@ -43,15 +50,8 @@ function Row(props: { row: RowData }) {
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
         </TableCell>
-        <TableCell>
-          <img
-            src={row.image}
-            alt={row.name}
-            style={{ width: "95px", borderRadius: "8px" }}
-          />
-        </TableCell>
-        <TableCell>{row.name}</TableCell>
       </TableRow>
+
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
           <Collapse in={open} timeout="auto" unmountOnExit>
