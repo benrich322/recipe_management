@@ -14,7 +14,7 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 
-interface HistoryItem {
+interface IngredientTable {
   icon: IconDefinition;
   ingredient: string;
   conversion: string | number | JSX.Element;
@@ -25,7 +25,7 @@ interface RowData {
   id?: string;
   name: string;
   image: string;
-  history: HistoryItem[];
+  ingredientList: IngredientTable[];
 }
 
 function Row(props: { row: RowData }) {
@@ -76,7 +76,7 @@ function Row(props: { row: RowData }) {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {row.history.map(
+                  {row.ingredientList.map(
                     ({ icon, ingredient, conversion, detail }, index) => (
                       <TableRow key={`${row.id}-${index}`}>
                         {" "}

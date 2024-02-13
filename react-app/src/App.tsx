@@ -10,7 +10,16 @@ import {
   faMugHot,
   faPizzaSlice,
 } from "@fortawesome/free-solid-svg-icons";
-import {toast2} from "./components/Data";
+import {
+  toast,
+  cafeSandwiches,
+  bagel,
+  cafeSalad,
+  cafeBowl,
+  breakfastTacos,
+  cafePizza,
+  cafeCoffee,
+} from "./components/Data";
 
 function App() {
   return (
@@ -18,51 +27,51 @@ function App() {
       <AppBar />
       <RecipeReviewCard
         title="Toast"
-        count={3}
+        count={toast.length}
         icon={faBreadSlice}
-        data={toast2}
+        data={toast}
       />
       <RecipeReviewCard
         title="Cafe Sandwiches"
-        count={2}
+        count={cafeSandwiches.length}
         icon={faBurger}
-        data={toast2}
+        data={cafeSandwiches}
       />
       <RecipeReviewCard
         title="Cafe Salads"
-        count={1}
+        count={cafeSalad.length}
         icon={faLeaf}
-        data={toast2}
+        data={cafeSalad}
       />
       <RecipeReviewCard
         title="Cafe Bowls"
-        count={1}
+        count={cafeBowl.length}
         icon={faBowlRice}
-        data={toast2}
+        data={cafeBowl}
       />
       <RecipeReviewCard
         title="Cafe Coffee"
-        count={1}
+        count={cafeCoffee.length}
         icon={faMugHot}
-        data={toast2}
+        data={cafeCoffee}
       />
       <RecipeReviewCard
         title="Cafe Pizza"
-        count={6}
+        count={cafePizza.length}
         icon={faPizzaSlice}
-        data={toast2}
+        data={cafePizza}
       />
       <RecipeReviewCard
         title="Bagel"
-        count={7}
+        count={bagel.length}
         icon={faBreadSlice}
-        data={toast2}
+        data={bagel}
       />
       <RecipeReviewCard
         title="Breakfast Tacos"
-        count={4}
+        count={breakfastTacos.length}
         icon={faEgg}
-        data={toast2}
+        data={breakfastTacos}
       />
     </div>
   );
