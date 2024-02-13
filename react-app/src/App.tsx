@@ -1,4 +1,3 @@
-import React from "react";
 import RecipeReviewCard from "./components/Card";
 import AppBar from "./components/AppBar";
 import {
