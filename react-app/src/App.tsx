@@ -1,7 +1,6 @@
 import React from "react";
 import RecipeReviewCard from "./components/Card";
 import AppBar from "./components/AppBar";
-import { createData, toast } from "./components/DataCreator";
 import {
   faBowlRice,
   faBreadSlice,
@@ -11,9 +10,7 @@ import {
   faMugHot,
   faPizzaSlice,
 } from "@fortawesome/free-solid-svg-icons";
-
-const { nameList, imageList, historyList } = toast;
-const toastTable = createData(nameList, imageList, historyList);
+import {toast2} from "./components/Data";
 
 function App() {
   return (
@@ -23,49 +20,49 @@ function App() {
         title="Toast"
         count={3}
         icon={faBreadSlice}
-        data={toastTable}
+        data={toast2}
       />
       <RecipeReviewCard
         title="Cafe Sandwiches"
         count={2}
         icon={faBurger}
-        data={toastTable}
+        data={toast2}
       />
       <RecipeReviewCard
         title="Cafe Salads"
         count={1}
         icon={faLeaf}
-        data={toastTable}
+        data={toast2}
       />
       <RecipeReviewCard
         title="Cafe Bowls"
         count={1}
         icon={faBowlRice}
-        data={toastTable}
+        data={toast2}
       />
       <RecipeReviewCard
         title="Cafe Coffee"
         count={1}
         icon={faMugHot}
-        data={toastTable}
+        data={toast2}
       />
       <RecipeReviewCard
         title="Cafe Pizza"
         count={6}
         icon={faPizzaSlice}
-        data={toastTable}
+        data={toast2}
       />
       <RecipeReviewCard
         title="Bagel"
         count={7}
         icon={faBreadSlice}
-        data={toastTable}
+        data={toast2}
       />
       <RecipeReviewCard
         title="Breakfast Tacos"
         count={4}
         icon={faEgg}
-        data={toastTable}
+        data={toast2}
       />
     </div>
   );
