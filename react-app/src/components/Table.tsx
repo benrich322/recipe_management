@@ -116,7 +116,7 @@ function CollapsibleTable({ data }: CollapsibleTableProps) {
       <Table aria-label="collapsible table" size="small">
         <TableBody>
           {data.map((rowData, index) => (
-            <Row key={index} row={rowData} /> // Assuming each row has a unique identifier
+            <Row key={index} row={rowData} />
           ))}
         </TableBody>
       </Table>
