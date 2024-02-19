@@ -16,7 +16,7 @@ function ResponsiveAppBar() {
             style={{ marginRight: "20px", width: "35px", height: "auto" }} // Update the width and height here
           />
           <Typography variant="h5" color="textPrimary">
-            Recipe Management Test
+            Recipe Management
           </Typography>
         </Toolbar>
       </Container>
