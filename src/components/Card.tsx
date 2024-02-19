@@ -17,21 +17,19 @@ interface RecipeReviewCardProps {
   title: string;
   count: number;
   icon: IconDefinition;
-  data: any[]; // Define the type of data prop
+  data: any[];
+  onClick: () => void;
+  open: boolean; // Add open as a prop
 }
 
 export default function RecipeReviewCard({
   title,
   count,
   icon,
-  data, // Accept data as a prop
+  data,
+  onClick,
+  open, // Receive open as a prop
 }: RecipeReviewCardProps) {
-  const [open, setOpen] = useState(false);
-
-  const handleExpandClick = () => {
-    setOpen(!open);
-  };
-
   return (
     <Card sx={{ maxWidth: 1000 }}>
       <CardHeader
@@ -42,11 +40,7 @@ export default function RecipeReviewCard({
         }
         action={
           <CardActions>
-            <IconButton
-              aria-label="expand row"
-              size="small"
-              onClick={handleExpandClick}
-            >
+            <IconButton aria-label="expand row" size="small" onClick={onClick}>
               {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
             </IconButton>
           </CardActions>

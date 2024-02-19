@@ -61,18 +61,20 @@ function Row(props: { row: RowData }) {
               <Table aria-label="purchases">
                 <TableHead>
                   <TableRow>
-                    <TableCell align="center" sx={{ padding: "2px" }}>
-                      Icon
-                    </TableCell>
+                    <TableCell
+                      align="center"
+                      sx={{ padding: "2px" }}
+                    ></TableCell>
                     <TableCell align="center" sx={{ padding: "4px" }}>
                       Ingredient
                     </TableCell>
                     <TableCell align="center" sx={{ padding: "4px" }}>
                       Conversion Factor
                     </TableCell>
-                    <TableCell align="center" sx={{ padding: "4px" }}>
-                      Detail
-                    </TableCell>
+                    <TableCell
+                      align="center"
+                      sx={{ padding: "4px" }}
+                    ></TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
