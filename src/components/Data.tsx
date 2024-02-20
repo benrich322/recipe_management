@@ -132,7 +132,7 @@ export const cafeSandwiches = [
   {
     name: "Veggie Brekkie",
     image:
-      "https://res.cloudinary.com/dbtk9pyvu/image/upload/v1675095050/web/items/hg1qgy4lckozgy6evhnq.jpg",
+      "https://res.cloudinary.com/dbtk9pyvu/image/upload/v1708378132/web/items/zjpsfyozqeglpfazonid.jpg",
     ingredientList: [
       {
         icon: faBurger,
@@ -476,8 +476,7 @@ export const cafePizza = [
         icon: faCheese,
         ingredient: "Italian Cheese",
         conversion: 0.045,
-        detail:
-          "1 unit of Italian Cheese can make 22 Garden Pesto Pizzas",
+        detail: "1 unit of Italian Cheese can make 22 Garden Pesto Pizzas",
       },
       {
         icon: faLeaf,

@@ -13,6 +13,7 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import { styled } from "@mui/system";
 
 interface IngredientTable {
   icon: IconDefinition;
@@ -28,22 +29,47 @@ interface RowData {
   ingredientList: IngredientTable[];
 }
 
+// Styled components for custom styling
+const ImageCell = styled(TableCell)(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+}));
+
+const Image = styled("img")(({ theme }) => ({
+  maxWidth: "75px",
+  height: "auto",
+  borderRadius: "8px",
+  marginRight: theme.spacing(2),
+}));
+
+const CollapseCell = styled(TableCell)(({ theme }) => ({
+  paddingBottom: 0,
+  paddingTop: 0,
+}));
+
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
+  "& > *": {
+    borderBottom: "unset",
+  },
+}));
+
+const RightAlignedTableCell = styled(TableCell)({
+  textAlign: "right",
+});
+
+// Row component
 function Row(props: { row: RowData }) {
   const { row } = props;
   const [open, setOpen] = React.useState(false);
 
   return (
     <React.Fragment>
-      <TableRow sx={{ "& > *": { borderBottom: "unset" } }} key={row.id}>
-        <TableCell style={{ display: "flex", alignItems: "center" }}>
-          <img
-            src={row.image}
-            alt={row.name}
-            style={{ maxWidth: "75px", height: "auto", borderRadius: "8px" }}
-          />
-          <span style={{ marginLeft: "20px" }}>{row.name}</span>
-        </TableCell>
-        <TableCell style={{ textAlign: "right" }}>
+      <StyledTableRow key={row.id}>
+        <ImageCell>
+          <Image src={row.image} alt={row.name} />
+          <span>{row.name}</span>
+        </ImageCell>
+        <RightAlignedTableCell>
           <IconButton
             aria-label="expand row"
             size="small"
@@ -51,11 +77,11 @@ function Row(props: { row: RowData }) {
           >
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
-        </TableCell>
-      </TableRow>
+        </RightAlignedTableCell>
+      </StyledTableRow>
 
-      <TableRow>
-        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
+      <StyledTableRow>
+        <CollapseCell colSpan={6}>
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box sx={{ margin: 1 }}>
               <Table aria-label="purchases">
@@ -81,8 +107,6 @@ function Row(props: { row: RowData }) {
                   {row.ingredientList.map(
                     ({ icon, ingredient, conversion, detail }, index) => (
                       <TableRow key={`${row.id}-${index}`}>
-                        {" "}
-                        {/* Ensure keys are unique */}
                         <TableCell align="center" sx={{ padding: "2px" }}>
                           <FontAwesomeIcon icon={icon} />
                         </TableCell>
@@ -102,17 +126,14 @@ function Row(props: { row: RowData }) {
               </Table>
             </Box>
           </Collapse>
-        </TableCell>
-      </TableRow>
+        </CollapseCell>
+      </StyledTableRow>
     </React.Fragment>
   );
 }
 
-interface CollapsibleTableProps {
-  data: RowData[];
-}
-
-function CollapsibleTable({ data }: CollapsibleTableProps) {
+// CollapsibleTable component
+function CollapsibleTable({ data }: { data: RowData[] }) {
   return (
     <TableContainer component={Paper}>
       <Table aria-label="collapsible table" size="small">
