@@ -30,7 +30,7 @@ interface RowData {
 }
 
 // Styled components for custom styling
-const ImageCell = styled(TableCell)(({ theme }) => ({
+const ImageCell = styled(TableCell)(() => ({
   display: "flex",
   alignItems: "center",
 }));
@@ -42,12 +42,12 @@ const Image = styled("img")(({ theme }) => ({
   marginRight: theme.spacing(2),
 }));
 
-const CollapseCell = styled(TableCell)(({ theme }) => ({
+const CollapseCell = styled(TableCell)(() => ({
   paddingBottom: 0,
   paddingTop: 0,
 }));
 
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
+const StyledTableRow = styled(TableRow)(() => ({
   "& > *": {
     borderBottom: "unset",
   },
