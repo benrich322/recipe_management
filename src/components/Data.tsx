@@ -132,7 +132,7 @@ export const cafeSandwiches = [
   {
     name: "Veggie Brekkie",
     image:
-      "https://res.cloudinary.com/dbtk9pyvu/image/upload/v1708378132/web/items/zjpsfyozqeglpfazonid.jpg",
+      "https://res.cloudinary.com/dbtk9pyvu/image/upload/v1708378160/web/items/vmsbdlbcrgexwl1y34ma.jpg",
     ingredientList: [
       {
         icon: faBurger,
